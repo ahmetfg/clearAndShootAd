@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1"/><title>Three.js Playable Case Study</title><style>/* Make page black and hidden until SDK styles load */
+    html, body {
+      background-color: #000; /* Black background to prevent white flash on load */
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      visibility: hidden; /* Elements take up space but are invisible */
+      opacity: 0;
+      transition: opacity 0.3s ease-in; /* Smooth transition when appearing */
+    }
+
+    /* Critical: .hidden class must remain hidden even if CSS hasn't loaded yet */
+    .hidden {
+      display: none !important;
+    }</style><script>/* Runs when all resources (SDK, CSS, JS, Images) are loaded */
+    window.addEventListener('load', function() {
+      // Make body visible
+      document.body.style.visibility = 'visible';
+      document.body.style.opacity = '1';
+    });</script><script src="https://cdn.jsdelivr.net/npm/three@0.136.0/build/three.min.js"></script><script src="https://cdn.jsdelivr.net/npm/three@0.136.0/examples/js/loaders/GLTFLoader.js"></script><script>function gameStart() {window.mintGameStart && window.mintGameStart()}; function gameClose() {window.mintGameClose && window.mintGameClose()}</script><meta name="HandheldFriendly" content="True"><meta http-equiv="cleartype" content="on"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta http-equiv="X-UA-Compatible" content="IE=10"><script defer="defer" src="build.js"></script></head><body><div id="install" onclick="window.appInstance.CTAPush()"><span>Download</span></div><div id="CTA" class="hidden"><img id="CTA-image"><span>Go play now!</span></div><div id="moneyDisplay"><span>8600</span></div><div id="info-box" class="hidden">Clear and Shot</div><div id="hand-tutorial"><span style="position:fixed;top:50%;left: 50%;bottom:auto;right: auto;font-size: 1.5rem;transform: translate(-50%, -50%);">Go play now!</span> <img id="hand"/></div><div id="controls" class="hidden"><label for="fileInput"><span id="fileInputLabel">Select GLB File </span><input type="file" id="fileInput" accept=".glb" class="hidden"></label> <span id="loadingIndicator" class="hidden">Loading...</span><div class="control-group"><label for="brushWidth">Width:</label> <input type="range" id="brushWidth" min="0.07" max="1.0" value="0.07" step="0.001" disabled="disabled"></div><div class="control-group"><label for="brushHeight">Height:</label> <input type="range" id="brushHeight" min="0.01" max="0.5" value="0.01" step="0.01"></div><div class="control-group"><label for="brushColor">Color:</label> <input type="color" id="brushColor" value="#ECECEC" class="color-picker"></div><div class="control-group"><label for="dynamicAngle">Dynamic Angle:</label> <input type="checkbox" id="dynamicAngle"></div></div><div id="messageContainer"></div><div id="upgradeContainer" class="hidden"><div class="upgrade-box"><h2 id="upgradeTitle">Shop</h2><p id="upgradeMessage">Chose your upgrade.<span class="font-bold">170 dollar</span> for every level.</p><div id="moneyStatus">Bank: <span id="upgradeCurrentMoney">8600</span></div><div class="upgrade-buttons-group"><button id="buyWidth" onclick="window.appInstance.buyUpgrade('width')" class="upgrade-button"><span class="upgrade-title">Upgrade Brush</span> <span id="widthLevel" class="upgrade-level">Level 1</span></button> <button id="buyIncome" onclick="window.appInstance.buyUpgrade('income')" class="upgrade-button"><span class="upgrade-title">Upgrade Income</span> <span id="incomeLevel" class="upgrade-level">Level 0</span></button></div><div class="next-game-container"><button id="nextGameButton" onclick="window.appInstance.applyUpgradesAndStartGame()" class="next-game-button">Next Game</button></div></div></div><div id="drawingCanvasContainer"></div></body></html>
